@@ -28,7 +28,15 @@ const BasicState = props => {
             payload: canvas
         })
     })
-
+    fabric.Object.prototype.set({
+        borderColor: '#5c5470',
+        cornerColor: '#DBD8E3',
+        cornerSize: 8,
+        cornerStyle: 'circle',
+        transparentCorners: false,
+        padding: 5,
+        borderDashArray: [10, 5],
+    })
 
 
     // UPDATE CANVAS ON WIDTH
@@ -141,15 +149,51 @@ const BasicState = props => {
     //     fill: 'red'
     // }))
     
+    const Addimage = file => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener('load', () => {      
+            fabric.Image.fromURL(reader.result, img => {
+                img.scaleToWidth(200)
+                img.scaleToHeight(200)
+                img.set({
+                    left: state.canvas && state.canvas.getCenter().left,
+                    top: state.canvas && state.canvas.getCenter().top,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.08, 
+                    scaleY: 0.08
+                })
+                state.canvas && state.canvas.add(img)
+                state.canvas && state.canvas.requestRenderAll()
+            })
+        })
+    }
     
     
-    
+    const DownloadImage = () => {
+        if(state.canvas){
+            let pngURL = state.canvas.toDataURL({
+                format: 'png',
+                quality: 1
+            })
+            let a = document.createElement("a");
+            a.href = pngURL
+            a.download = 'untitled.png'
+            a.click()
+        }else {
+            console.log('download error')
+        }
+    }
+
     return (
         <BasicContext.Provider value={{
             canvas: state.canvas,
             currentClip: state.currentClip,
             InitCanvas,
-            HandleClip
+            HandleClip,
+            Addimage,
+            DownloadImage
         }}>
             {props.children}
         </BasicContext.Provider>

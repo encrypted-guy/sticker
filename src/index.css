@@ -147,6 +147,7 @@ img {
 
 .upload_image {
   width: 80%;
+  position: relative;
   padding: 10px 0;
   margin: 10px 0;
   background-color: var(--color_dark);
@@ -162,7 +163,14 @@ img {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
 }
-
+#newimg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  
+}
 .upload_image svg {
   margin: 10px 0;
   fill: var(--color_light);
@@ -304,3 +312,5 @@ img {
   border: none;
   cursor: pointer;
 } */
+
+
