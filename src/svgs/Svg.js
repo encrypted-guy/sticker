@@ -5,7 +5,7 @@ import Seahorse from './seahorse.svg'
 import Trangle from './trangle.svg'
 import Turtle from './turtle.svg'
 
-// const SvgList = [Bedge, Fullhorse, Hoursehead, Seahorse, Trangle, Turtle]
+// SVG ICONS 
 const SvgList = [
     {
         id: 123,

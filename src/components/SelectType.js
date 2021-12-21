@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react';
-import Demoimg from '../demo.png'
 import SvgList from '../svgs/Svg'
 
 import BasicContext from '../context/basics/BasicContext';
