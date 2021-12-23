@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 export default  (state, action) =>  {
     switch(action.type) {
+        // canvas 
         case 'INIT_CANVAS':
             return {
                 ...state,
